@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function LanguageBar() {
 	return (
-		<div className="flex h-full w-full flex-wrap items-start justify-center gap-x-4 gap-y-2 px-1 text-[#bfbfbf] text-[13px]">
+		<div className="flex w-full flex-wrap items-start justify-center gap-x-4 gap-y-2 px-1 text-[#bfbfbf] text-[13px]">
 			Google offered in:
 			<Link
 				href={"/"}

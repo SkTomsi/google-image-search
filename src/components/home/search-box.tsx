@@ -8,7 +8,7 @@ import { Input } from "../ui/input";
 export default function SearchBox() {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [suggestionBoxOpen, setSuggestionBoxOpen] = useState<boolean>(false);
-	const [_imageSearchOpen, setImageSearchOpen] = useState<boolean>(false);
+	const [imageSearchOpen, setImageSearchOpen] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (inputRef.current) {
@@ -72,14 +72,15 @@ export default function SearchBox() {
 				</div>
 
 				{suggestionBoxOpen && (
-					<div className="-z-20 absolute top-0 flex min-h-[200px] w-full flex-col items-center rounded-[24px] bg-[#303135] shadow-lg">
-						<ul className="mt-10 h-full w-full px-5 py-4 ">
+					<div className="-z-20 absolute top-0 flex h-[400px] w-full flex-col items-center rounded-[24px] bg-[#303135] px-5 shadow-lg">
+						<div className="h-1 w-full border-white/20 border-b pt-12" />
+						<ul className="h-full w-full py-4 ">
 							<li>हिंदी</li>
 							<li>বাংলা</li>
 							<li>मराठी</li>
 						</ul>
 						{suggestionBoxOpen && (
-							<div className="z-40 flex gap-2 pt-5 pb-5">
+							<div className="z-40 flex gap-2 pb-5">
 								<Button variant={"google-secondary"}>Google Search</Button>
 								<Button variant={"google-secondary"}>I'm Feeling Lucky</Button>
 							</div>
@@ -87,12 +88,10 @@ export default function SearchBox() {
 					</div>
 				)}
 			</div>
-			{!suggestionBoxOpen && (
-				<div className="z-50 flex gap-1 pt-5">
-					<Button variant={"google"}>Google Search</Button>
-					<Button variant={"google"}>I'm Feeling Lucky</Button>
-				</div>
-			)}
+			<div className="-z-50 flex gap-1 pt-5">
+				<Button variant={"google"}>Google Search</Button>
+				<Button variant={"google"}>I'm Feeling Lucky</Button>
+			</div>
 		</div>
 	);
 }

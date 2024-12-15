@@ -7,7 +7,7 @@ export default function Footer() {
 	};
 
 	return (
-		<div className="flex h-fit w-full flex-col bg-[#171717]">
+		<div className="mt-auto flex h-fit w-full flex-col bg-[#171717]">
 			<div className="border-white/20 border-b px-[30px] py-[12px] text-[15px]">
 				India
 			</div>

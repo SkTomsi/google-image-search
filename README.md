@@ -2,7 +2,7 @@
 
 - [ ] Google Home Page UI
     - [x] mvp ui
-    - [ ] animations
+    - [x] animations
 - [ ] Google Image Search UI
 - [ ] Text Search functionality
 - [ ] Image Search functionality
