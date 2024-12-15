@@ -1,10 +1,13 @@
 # Google Image Search
 
-- [ ] Google Home Page UI
+- [x] Google Home Page UI
     - [x] mvp ui
     - [x] animations
+    - [x] search box
+    - [x] suggestion box
+    - [ ] add framer motion
 - [ ] Google Image Search UI
-- [ ] Text Search functionality
+- [x] Text Search functionality
 - [ ] Image Search functionality
 - [ ] Imaging cropping functionality
 - [ ] Render the mock results
