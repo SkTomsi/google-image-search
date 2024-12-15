@@ -1,6 +1,5 @@
 import { Grip } from "lucide-react";
 import Link from "next/link";
-import { ModeToggle } from "../providers/mode-toggle";
 
 export default function TopHeader() {
 	return (
@@ -12,7 +11,6 @@ export default function TopHeader() {
 				<Link href={"/"} className="mx-[5px] p-[5px] hover:underline">
 					Store
 				</Link>
-				<ModeToggle />
 			</div>
 			<div className="flex items-center justify-between pl-[15px] text-[13px] ">
 				<div className="pr-[15px]">
