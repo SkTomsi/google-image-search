@@ -1,6 +1,8 @@
 # Google Image Search
 
 - [ ] Google Home Page UI
+    - [x] mvp ui
+    - [ ] animations
 - [ ] Google Image Search UI
 - [ ] Text Search functionality
 - [ ] Image Search functionality
