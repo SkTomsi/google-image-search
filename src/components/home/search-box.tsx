@@ -27,7 +27,7 @@ export default function SearchBox() {
 			className="z-10 flex w-full max-w-[584px] flex-col items-center py-5"
 		>
 			<div
-				className={`relative mx-auto flex min-h-11 w-full justify-start rounded-full border border-transparent shadow-none ${suggestionBoxOpen ? "bg-transparent" : "bg-[#4d5156]"}`}
+				className={`relative mx-auto flex min-h-11 w-full justify-start rounded-full border border-transparent shadow-none ${suggestionBoxOpen || imageSearchOpen ? "bg-transparent" : "bg-[#4d5156]"}`}
 			>
 				{!imageSearchOpen ? <SearchInput /> : <ImageSearchBox />}
 			</div>

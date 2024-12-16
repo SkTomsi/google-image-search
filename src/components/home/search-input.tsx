@@ -56,7 +56,7 @@ export default function SearchInput() {
 				<div className="flex space-x-3 px-4">
 					{searchTerm && (
 						<X
-							className="h-10 w-10 cursor-pointer border-muted border-r pr-3"
+							className="h-10 w-10 cursor-pointer border-r border-r-white/20 pr-3"
 							onClick={() => setSearchTerm("")}
 						/>
 					)}

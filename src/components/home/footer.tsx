@@ -11,7 +11,7 @@ export default function Footer() {
 			<div className="border-white/20 border-b px-[30px] py-[12px] text-[15px]">
 				India
 			</div>
-			<div className="flex flex-col items-center px-5 lg:flex-row lg:items-start lg:justify-between">
+			<div className="flex flex-col items-center px-5 sm:flex-row sm:justify-between lg:items-start">
 				<div className="flex ">
 					{links.bottomL.map((link) => (
 						<Link
