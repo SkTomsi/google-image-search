@@ -1,16 +1,50 @@
+import { useImageSearch } from "@/hooks/use-image-search";
+import { useImageStore } from "@/store/use-image";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 
 export default function ImageUploader() {
+	const [isDragging, setIsDragging] = useState(false);
+
+	const { isLoading } = useImageSearch();
+	const { setImage } = useImageStore();
+
+	const router = useRouter();
+
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	function handleFileUpload(e: any) {
+		setImage(e.target.files);
+		router.push("/search");
+	}
+
 	return (
 		<div className="relative flex h-full w-full flex-col rounded-[8px] border border-[rgb(60,64,67)] border-dashed bg-[#202125]">
-			<div className="h-full ">
-				<div className="relative flex h-full w-full items-center justify-center ">
-					<input
-						type="file"
-						className="absolute z-30 h-full w-full opacity-0"
-					/>
+			{isDragging && (
+				<div className="absolute z-40 flex h-full w-full items-center justify-center rounded-[8px] border border-[rgb(138,180,248)] border-dashed bg-[#313e53]">
+					<p className="text-[#93969b] text-base">Drop an image here</p>
+				</div>
+			)}
+			{isLoading && (
+				<div className="absolute z-40 flex h-full w-full flex-col items-center justify-center gap-4 rounded-[8px] border border-[rgb(138,180,248)] border-dashed bg-[#313e53]">
+					<Loader2 className="h-10 w-10 animate-spin" />
+					<p className="text-[#93969b] text-base">Uploading</p>
+				</div>
+			)}
+			<input
+				type="file"
+				className="absolute z-50 h-full w-full border opacity-0"
+				onDragEnter={() => setIsDragging(true)}
+				onDragLeave={() => setIsDragging(false)}
+				onDragOver={() => setIsDragging(true)}
+				onDrop={() => setIsDragging(false)}
+				onChange={handleFileUpload}
+			/>
+			<div className="z-10 h-full ">
+				<div className="relative flex h-full w-full items-center justify-center border-yellow-500">
 					<div className="absolute flex h-full w-full items-center justify-center gap-5">
 						{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 						<svg

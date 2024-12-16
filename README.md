@@ -7,6 +7,8 @@
     - [x] suggestion box
     - [ ] add framer motion
 - [ ] Google Image Search UI
+    - [x] mvp ui
+    - [ ] search page ui
 - [x] Text Search functionality
 - [ ] Image Search functionality
 - [ ] Imaging cropping functionality
