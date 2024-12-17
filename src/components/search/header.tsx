@@ -12,7 +12,7 @@ export default function Header() {
 					alt="Google Logo"
 					width={74}
 					height={24}
-					className="ml-3"
+					className="ml-3 h-[24px] w-auto"
 				/>
 			</Link>
 			<div className="flex items-center">

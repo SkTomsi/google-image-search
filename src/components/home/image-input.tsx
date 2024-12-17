@@ -10,14 +10,28 @@ import { Separator } from "../ui/separator";
 export default function ImageUploader() {
 	const [isDragging, setIsDragging] = useState(false);
 
-	const { isLoading } = useImageSearch();
+	const { isLoading, searchResults } = useImageSearch();
 	const { setImage } = useImageStore();
 
 	const router = useRouter();
 
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	function handleFileUpload(e: any) {
-		setImage(e.target.files);
+	async function handleFileUpload(e: any) {
+		if (e.target.files.length === 0) {
+			return false;
+		}
+
+		const file = e.target.files[0];
+
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = (event) => {
+			const base64 = event.target?.result as string;
+			setImage(base64);
+		};
+
+		await searchResults();
+
 		router.push("/search");
 	}
 
@@ -36,7 +50,7 @@ export default function ImageUploader() {
 			)}
 			<input
 				type="file"
-				className="absolute z-50 h-full w-full border opacity-0"
+				className="absolute z-50 h-2/3 w-full opacity-0 "
 				onDragEnter={() => setIsDragging(true)}
 				onDragLeave={() => setIsDragging(false)}
 				onDragOver={() => setIsDragging(true)}
@@ -104,7 +118,7 @@ export default function ImageUploader() {
 					</div>
 				</div>
 			</div>
-			<div className="flex w-full flex-col items-center justify-between gap-[14px] p-5 pt-0">
+			<div className=" flex w-full flex-col items-center justify-between gap-[14px] p-5 pt-0">
 				<div className="flex w-full items-center">
 					<Separator className=" bg-[rgb(60,64,67)]/50" />
 					<p className="mx-5 text-[#919c95] text-[14px]">OR</p>
