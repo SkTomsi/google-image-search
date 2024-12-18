@@ -6,7 +6,7 @@ import { Card } from "../ui/card";
 export const ResultsList = memo(function ResultsSection() {
 	return (
 		<div className="h-full p-5 sm:w-[50%] sm:overflow-y-auto">
-			<ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+			<ResponsiveMasonry>
 				<Masonry gutter="16px" columnsCount={3} className="border-none">
 					{RESULTS?.map((result) => (
 						<Card
