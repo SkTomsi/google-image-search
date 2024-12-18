@@ -23,12 +23,15 @@ export default function ImageUploader() {
 
 		const file = e.target.files[0];
 
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-		reader.onload = (event) => {
-			const base64 = event.target?.result as string;
-			setImage(base64);
-		};
+		// const reader = new FileReader();
+		// reader.readAsDataURL(file);
+		// reader.onload = (event) => {
+		// 	const base64 = event.target?.result as string;
+		// 	setImage(base64);
+		// };
+
+		const imageurl = URL.createObjectURL(file);
+		setImage(imageurl);
 
 		await searchResults();
 
@@ -56,6 +59,7 @@ export default function ImageUploader() {
 				onDragOver={() => setIsDragging(true)}
 				onDrop={() => setIsDragging(false)}
 				onChange={handleFileUpload}
+				accept="image/*"
 			/>
 			<div className="z-10 h-full ">
 				<div className="relative flex h-full w-full items-center justify-center border-yellow-500">

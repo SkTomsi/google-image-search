@@ -8,11 +8,11 @@
     - [ ] add framer motion
 - [ ] Google Image Search UI
     - [x] mvp ui
-    - [ ] search page ui
+    - [] search page ui
 - [x] Text Search functionality
-- [ ] Image Search functionality
-- [ ] Imaging cropping functionality
-- [ ] Render the mock results
+- [x] Image Search functionality
+- [x] Imaging cropping functionality
+- [x] Render the mock results
 - [ ] Add all rendering and progess/loading states
 - [ ] For the image search, scrape or reverse engineer Google's approach rather than using an API
 - [ ] Add tooltips on the main search box

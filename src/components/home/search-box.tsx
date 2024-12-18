@@ -24,7 +24,7 @@ export default function SearchBox() {
 	return (
 		<div
 			ref={containerRef}
-			className="z-10 flex w-full max-w-[584px] flex-col items-center py-5"
+			className="z-10 flex w-full max-w-[584px] flex-col items-center px-4 py-5 sm:px-0"
 		>
 			<div
 				className={`relative mx-auto flex min-h-11 w-full justify-start rounded-full border border-transparent shadow-none ${suggestionBoxOpen || imageSearchOpen ? "bg-transparent" : "bg-[#4d5156]"}`}
