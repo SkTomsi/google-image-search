@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import "react-image-crop/dist/ReactCrop.css";
 import { searchImages } from "../../actions/search";
 
-export default function ImageSearchPage() {
+function Search() {
 	const searchParams = useSearchParams();
 	const url = searchParams.get("p");
 
@@ -25,16 +25,20 @@ export default function ImageSearchPage() {
 
 	return (
 		<div className="relative flex h-full w-full flex-col flex-nowrap overflow-x-hidden text-black sm:h-[calc(100vh-64px)] sm:flex-row">
-			<Suspense>
-				<ImageCropper isLoading={isLoading} />
-				<div className="h-full p-5 sm:w-[50%] sm:overflow-y-auto">
-					<ResultsList
-						url={url}
-						data={data?.visual_matches}
-						isLoading={isLoading}
-					/>
-				</div>
-			</Suspense>
+			<ImageCropper isLoading={isLoading} />
+			<div className="h-full p-5 sm:w-[50%] sm:overflow-y-auto">
+				<ResultsList
+					url={url}
+					data={data?.visual_matches}
+					isLoading={isLoading}
+				/>
+			</div>
 		</div>
 	);
+}
+
+export default function ImageSearchPage() {
+	<Suspense>
+		<Search />
+	</Suspense>;
 }
