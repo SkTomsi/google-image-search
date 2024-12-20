@@ -1,5 +1,6 @@
 import { Grip } from "lucide-react";
 import Link from "next/link";
+import SignIn from "./user-button";
 
 export default function TopHeader() {
 	return (
@@ -43,11 +44,8 @@ export default function TopHeader() {
 				>
 					<Grip className="h-[20px] w-[20px] " />
 				</Link>
-				<div className="flex h-12 w-12 items-center justify-center p-1">
-					<p className="flex h-full w-full items-center justify-center rounded-full bg-muted">
-						T
-					</p>
-				</div>
+
+				<SignIn />
 			</div>
 		</div>
 	);

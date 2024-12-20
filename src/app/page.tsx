@@ -1,5 +1,3 @@
-"use client";
-
 import Footer from "@/components/home/footer";
 import GoogleLogo from "@/components/home/google-logo";
 import LanguageBar from "@/components/home/language-bar";

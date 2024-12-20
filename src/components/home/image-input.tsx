@@ -1,5 +1,4 @@
-import { useImageSearch } from "@/hooks/use-image-search";
-import { useImageStore } from "@/store/use-image";
+import { useUploadThing } from "@/lib/uploadthing";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,34 +7,32 @@ import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 
 export default function ImageUploader() {
-	const [isDragging, setIsDragging] = useState(false);
-
-	const { isLoading, searchResults } = useImageSearch();
-	const { setImage } = useImageStore();
-
 	const router = useRouter();
+	const [isDragging, setIsDragging] = useState(false);
+	const { isUploading, startUpload } = useUploadThing("imageUploader", {
+		onClientUploadComplete: (res) => {
+			//get the url of the uploaded file
+
+			const url = res[0].url;
+			router.push(`/search?p=${url}`);
+		},
+		onUploadError: () => {
+			alert("error occurred while uploading");
+		},
+	});
 
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	async function handleFileUpload(e: any) {
-		if (e.target.files.length === 0) {
-			return false;
+		const input = e.target.files;
+
+		if (input?.length === 0) {
+			return;
 		}
 
-		const file = e.target.files[0];
+		//convert to an array as uploadthing only accepts an array of files
+		const fileArray: File[] = Array.from(input);
 
-		// const reader = new FileReader();
-		// reader.readAsDataURL(file);
-		// reader.onload = (event) => {
-		// 	const base64 = event.target?.result as string;
-		// 	setImage(base64);
-		// };
-
-		const imageurl = URL.createObjectURL(file);
-		setImage(imageurl);
-
-		await searchResults();
-
-		router.push("/search");
+		await startUpload(fileArray);
 	}
 
 	return (
@@ -45,7 +42,7 @@ export default function ImageUploader() {
 					<p className="text-[#93969b] text-base">Drop an image here</p>
 				</div>
 			)}
-			{isLoading && (
+			{isUploading && (
 				<div className="absolute z-40 flex h-full w-full flex-col items-center justify-center gap-4 rounded-[8px] border border-[rgb(138,180,248)] border-dashed bg-[#313e53]">
 					<Loader2 className="h-10 w-10 animate-spin" />
 					<p className="text-[#93969b] text-base">Uploading</p>
@@ -60,6 +57,7 @@ export default function ImageUploader() {
 				onDrop={() => setIsDragging(false)}
 				onChange={handleFileUpload}
 				accept="image/*"
+				multiple={false}
 			/>
 			<div className="z-10 h-full ">
 				<div className="relative flex h-full w-full items-center justify-center border-yellow-500">

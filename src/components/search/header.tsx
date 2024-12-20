@@ -1,6 +1,7 @@
 import { Grip, Upload } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import UserButton from "../home/user-button";
 import { Button } from "../ui/button";
 
 export default function Header() {
@@ -16,7 +17,10 @@ export default function Header() {
 				/>
 			</Link>
 			<div className="flex items-center">
-				<Button variant={"ghost"} className="">
+				<Button
+					variant={"ghost"}
+					className="hover:bg-muted-foreground/10 hover:text-black"
+				>
 					<Upload /> Upload
 				</Button>
 				<Link
@@ -25,11 +29,7 @@ export default function Header() {
 				>
 					<Grip className="h-[20px] w-[20px] text-[#5f6368]" />
 				</Link>
-				<div className="flex h-12 w-12 items-center justify-center p-1">
-					<p className="flex h-full w-full items-center justify-center rounded-full bg-muted/10">
-						T
-					</p>
-				</div>
+				<UserButton />
 			</div>
 		</div>
 	);
