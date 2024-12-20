@@ -38,7 +38,9 @@ function Search() {
 }
 
 export default function ImageSearchPage() {
-	<Suspense>
-		<Search />
-	</Suspense>;
+	return (
+		<Suspense>
+			<Search />
+		</Suspense>
+	);
 }
