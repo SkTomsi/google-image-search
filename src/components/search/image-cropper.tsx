@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useRef, useState, type SyntheticEvent } from "react";
+import { type SyntheticEvent, useRef, useState } from "react";
 import ReactCrop, {
 	centerCrop,
 	makeAspectCrop,
@@ -97,7 +97,7 @@ export function ImageCropper({ isLoading }: { isLoading: boolean }) {
 			<Button className="-translate-x-[50%] absolute top-12 left-1/2 transform rounded-full border border-muted-foreground/40 bg-transparent p-0 px-4 py-2 text-base text-white hover:bg-muted-foreground/10">
 				{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 				<svg
-					enable-background="new 0 0 24 24"
+					enableBackground="new 0 0 24 24"
 					height="18"
 					viewBox="0 0 24 24"
 					width="18"

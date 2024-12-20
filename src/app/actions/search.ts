@@ -25,6 +25,7 @@ export async function searchImages(imageUrl: string | null) {
 
 		return data;
 	} catch (error) {
+		// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 		console.log(error);
 	}
 }

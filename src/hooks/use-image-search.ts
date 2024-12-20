@@ -14,8 +14,9 @@ export function useImageSearch() {
 					resolve(true);
 				}, 3000);
 			});
-		} catch (error) {
-			console.log(error);
+		} catch (_error) {
+			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+			console.log(_error);
 		} finally {
 			setIsLoading(false);
 		}
