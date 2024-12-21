@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { type SyntheticEvent, useRef, useState } from "react";
+import { useRef, useState, type SyntheticEvent } from "react";
 import ReactCrop, {
 	centerCrop,
 	makeAspectCrop,
@@ -9,6 +9,7 @@ import ReactCrop, {
 } from "react-image-crop";
 import { Button } from "../ui/button";
 import { GlowingStars } from "./glowing-stars";
+import "./react-crop.css";
 
 export function ImageCropper({ isLoading }: { isLoading: boolean }) {
 	const [crop, setCrop] = useState<Crop>();
