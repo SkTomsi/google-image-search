@@ -7,7 +7,7 @@ This repo is my assignment submission for the role @ Shoppin.app. I've developed
 
 **Looks better on Desktop but is fully responsive**
 <br>
-[Deployed Link]([https://next-todo-sktomsi.vercel.app/](https://google-image-search-peach.vercel.app/)
+[Deployed Link]([https://next-todo-sktomsi.vercel.app/](https://google-image-search-peach.vercel.app/)]
 
 ## Potential Improvements
 
