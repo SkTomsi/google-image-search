@@ -24,7 +24,7 @@ export default function TopHeader() {
 				</div>
 				<Link
 					href={"/"}
-					className="flex h-12 w-12 items-center justify-center rounded-full p-[4px] transition-colors hover:bg-zinc-100/5"
+					className="hidden h-12 w-12 items-center justify-center rounded-full p-[4px] transition-colors hover:bg-zinc-100/5 sm:flex"
 				>
 					{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 					<svg
@@ -40,7 +40,7 @@ export default function TopHeader() {
 				</Link>
 				<Link
 					href={"/"}
-					className="flex h-12 w-12 items-center justify-center rounded-full p-[4px] transition-colors hover:bg-zinc-100/5"
+					className=" hidden h-12 w-12 items-center justify-center rounded-full p-[4px] transition-colors hover:bg-zinc-100/5 sm:flex"
 				>
 					<Grip className="h-[20px] w-[20px] " />
 				</Link>

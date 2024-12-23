@@ -1,4 +1,10 @@
 import Header from "@/components/search/header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Gooogle Lens Clone",
+	description: "Google Lens Clone built using nextjs and tailwindcss",
+};
 
 export default function SearchLayout({
 	children,
