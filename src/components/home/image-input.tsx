@@ -2,6 +2,8 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "sonner";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
@@ -21,8 +23,10 @@ export default function ImageUploader() {
 		},
 	});
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	async function handleFileUpload(e: any) {
+	async function handleFileUpload(
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		e: any,
+	) {
 		const input = e.target.files;
 
 		if (input?.length === 0) {
@@ -33,6 +37,27 @@ export default function ImageUploader() {
 		const fileArray: File[] = Array.from(input);
 
 		await startUpload(fileArray);
+	}
+
+	const fileLinkSchema = z.object({
+		url: z.string().url(),
+	});
+
+	function imageLinkAction(formData: FormData) {
+		const form = Object.fromEntries(formData.entries());
+
+		const results = fileLinkSchema.safeParse(form);
+
+		if (!results.success) {
+			toast.error("Please enter a valid image link");
+			return;
+		}
+
+		const url = results.data.url;
+
+		if (url) {
+			return router.push(`/search?p=${url}`);
+		}
 	}
 
 	return (
@@ -127,13 +152,22 @@ export default function ImageUploader() {
 					<Separator className=" bg-[rgb(60,64,67)]/50" />
 				</div>
 				<div className="flex w-full items-center gap-2">
-					<Input
-						placeholder="Paste image link"
-						className="h-10 rounded-full border border-[rgb(60,64,67)] bg-[#303134] px-6 text-[14px] text-[rgb(241,243,244)] outline-none"
-					/>
-					<Button className="rounded-full border border-[rgb(60,64,67)] bg-[#303135] px-6 py-2 text-[14px] text-[rgb(138,180,248)] hover:bg-[rgba(136,170,187,0.04)] hover:text-[rgb(210,227,252)]">
-						Search
-					</Button>
+					<form
+						className="flex w-full items-center gap-2"
+						action={imageLinkAction}
+					>
+						<Input
+							name="url"
+							placeholder="Paste image link"
+							className="h-10 rounded-full border border-[rgb(60,64,67)] bg-[#303134] px-6 text-[14px] text-[rgb(241,243,244)] outline-none"
+						/>
+						<Button
+							className="rounded-full border border-[rgb(60,64,67)] bg-[#303135] px-6 py-2 text-[14px] text-[rgb(138,180,248)] hover:bg-[rgba(136,170,187,0.04)] hover:text-[rgb(210,227,252)]"
+							type="submit"
+						>
+							Search
+						</Button>
+					</form>
 				</div>
 			</div>
 		</div>

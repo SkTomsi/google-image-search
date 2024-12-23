@@ -66,6 +66,8 @@ export function ImageCropper({ isLoading }: { isLoading: boolean }) {
 	async function onImageCropComplete(crop: Crop) {
 		const url = await getProcessedImage(crop, imageRef.current);
 
+		
+
 		setCroppedImage(url);
 	}
 
