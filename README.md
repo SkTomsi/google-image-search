@@ -11,8 +11,8 @@ This repo is my assignment submission for the role @ Shoppin.app. I've developed
 
 ## Potential Improvements
 
-- Robust State Management:
-	- Considering the addition of the immer package to achieve O(1) time complexity through mutable state while updating and tackle deep nesting.
+- Image Compression & Optimization:
+	- The images uploaded can be heavily optimised to save costs on storage and performance. Currently if we upload a very HQ image, the image cropper component loads the image in chunks. This doesnt look good on the UI. We can eliminate this by compressing the image and making it optimised for load times.
 
 - Authentication:
 	- Implementing a secure authentication system to ensure user data privacy and security.
